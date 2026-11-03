@@ -3,43 +3,45 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#f8fafc">
   <meta name="description" content="Miles Nichols — Systems Engineer, AI Graduate Student, and Founder of Hook Point Solutions LLC.">
   <title>Miles Nichols — Systems, AI & Software Consulting</title>
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
   <style>
     :root {
       color-scheme: light;
-      --bg: #ffffff;
-      --bg-alt: #f8f9fa;
-      --card-bg: #ffffff;
-      --text: #0a0a0a;
-      --text-muted: #52525b;
-      --text-subtle: #71717a;
-      --border: #e4e4e7;
-      --border-dark: #09090b;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --card-border: #e2e8f0;
+      --card-border-hover: #cbd5e1;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-subtle: #64748b;
+      --accent: #0284c7;
+      --accent-hover: #0369a1;
+      --accent-light: #e0f2fe;
+      --accent-border: #bae6fd;
       --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      --max-width: 1120px;
-      --nav-height: 70px;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --max-width: 1140px;
+      --nav-height: 74px;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-height) + 24px); }
     body {
       margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font: 15px/1.65 var(--sans);
+      background-color: var(--bg);
+      color: var(--text-main);
+      font: 16px/1.65 var(--sans);
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
     }
 
     a { color: inherit; text-decoration: none; }
     button, input, select, textarea { font: inherit; }
     button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
-      outline: 2px solid var(--border-dark);
+      outline: 2px solid var(--accent);
       outline-offset: 3px;
     }
 
@@ -48,16 +50,16 @@
       margin-inline: auto;
     }
 
-    /* TOP NAV */
+    /* NAVIGATION */
     .topbar {
       position: fixed;
       z-index: 50;
       inset: 0 0 auto;
       height: var(--nav-height);
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      background: rgba(248, 250, 252, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
     }
     .nav {
       height: 100%;
@@ -71,41 +73,40 @@
       align-items: center;
       gap: 12px;
     }
-    .brand-mark {
+    .brand-logo {
+      width: 38px;
+      height: 38px;
       display: grid;
-      width: 36px;
-      height: 36px;
       place-items: center;
-      background: var(--border-dark);
+      background: linear-gradient(135deg, #0284c7, #0369a1);
       color: #ffffff;
-      font: 700 13px/1 var(--mono);
-      letter-spacing: -0.05em;
-      border-radius: 4px;
+      font: 800 14px/1 var(--mono);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
     }
-    .brand-copy { display: grid; line-height: 1.25; }
-    .brand-name { font-size: 13px; font-weight: 700; letter-spacing: 0.05em; }
-    .brand-company { color: var(--text-subtle); font: 10px/1 var(--mono); letter-spacing: 0.05em; }
+    .brand-text { display: grid; line-height: 1.25; }
+    .brand-name { font-size: 13px; font-weight: 700; letter-spacing: 0.04em; color: var(--text-main); }
+    .brand-sub { font: 10px var(--mono); color: var(--text-subtle); letter-spacing: 0.05em; }
 
-    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
     .nav-links > a:not(.btn) {
-      font: 12px/1 var(--mono);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      font-size: 13px;
+      font-weight: 550;
       color: var(--text-muted);
       transition: color 0.15s ease;
     }
-    .nav-links > a:not(.btn):hover { color: var(--text); }
+    .nav-links > a:not(.btn):hover { color: var(--accent); }
 
     .menu-btn {
       display: none;
       width: 40px;
       height: 40px;
       place-items: center;
-      border: 1px solid var(--border);
-      background: transparent;
-      color: var(--text);
+      border: 1px solid var(--card-border);
+      background: var(--card);
+      border-radius: 10px;
+      color: var(--text-main);
       cursor: pointer;
-      border-radius: 4px;
     }
 
     /* BUTTONS */
@@ -115,62 +116,63 @@
       justify-content: center;
       gap: 8px;
       padding: 0 20px;
-      height: 42px;
-      font: 12px/1 var(--mono);
+      height: 44px;
+      font-size: 13px;
       font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      border-radius: 4px;
-      transition: all 0.15s ease;
+      border-radius: 10px;
+      transition: all 0.2s ease;
       cursor: pointer;
     }
-    .btn-dark {
-      background: var(--border-dark);
+    .btn-primary {
+      background: var(--accent);
       color: #ffffff;
-      border: 1px solid var(--border-dark);
+      border: 1px solid var(--accent);
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.2);
     }
-    .btn-dark:hover {
-      background: #27272a;
-      border-color: #27272a;
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.3);
     }
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border-dark);
+    .btn-secondary {
+      background: var(--card);
+      color: var(--text-main);
+      border: 1px solid var(--card-border);
     }
-    .btn-outline:hover {
-      background: var(--text);
-      color: #ffffff;
+    .btn-secondary:hover {
+      border-color: var(--card-border-hover);
+      background: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
     }
 
     /* SECTIONS */
     .section {
       padding: 96px 0;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--card-border);
     }
-    .section-head {
-      margin-bottom: 48px;
-      max-width: 720px;
+    .section-header {
+      margin-bottom: 52px;
+      max-width: 680px;
     }
-    .section-tag {
-      font: 11px/1 var(--mono);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--text-subtle);
-      margin-bottom: 12px;
-      display: flex;
+    .badge {
+      display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
+      padding: 4px 12px;
+      background: var(--accent-light);
+      border: 1px solid var(--accent-border);
+      color: var(--accent);
+      font: 700 11px var(--mono);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 20px;
+      margin-bottom: 14px;
     }
-    .section-tag::before {
-      content: "";
-      width: 12px;
-      height: 1px;
-      background: var(--text-subtle);
-    }
-    h1, h2, h3 { color: var(--text); font-weight: 700; letter-spacing: -0.03em; margin: 0; }
-    h2 { font-size: clamp(28px, 4vw, 38px); line-height: 1.15; }
-    .section-intro {
+    h1, h2, h3 { color: var(--text-main); font-weight: 700; letter-spacing: -0.03em; margin: 0; }
+    h2 { font-size: clamp(28px, 4vw, 40px); line-height: 1.15; }
+    .section-desc {
       margin-top: 14px;
       color: var(--text-muted);
       font-size: 15px;
@@ -179,240 +181,304 @@
 
     /* HERO */
     .hero {
-      padding: calc(var(--nav-height) + 80px) 0 80px;
-      border-bottom: 1px solid var(--border);
+      padding: calc(var(--nav-height) + 72px) 0 88px;
+      position: relative;
     }
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 60px;
-      align-items: start;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 56px;
+      align-items: center;
     }
-    .hero-role {
-      font: 11px/1 var(--mono);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-subtle);
-      margin-bottom: 20px;
-    }
-    h1 {
-      font-size: clamp(42px, 5vw, 64px);
-      line-height: 1.05;
+    .hero-title {
+      font-size: clamp(40px, 5.2vw, 62px);
+      line-height: 1.08;
       letter-spacing: -0.04em;
     }
-    .hero-bio {
-      margin: 24px 0 32px;
-      font-size: 16px;
-      line-height: 1.75;
+    .hero-title .highlight {
+      background: linear-gradient(120deg, #0284c7, #0d9488);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle {
+      margin: 20px 0 32px;
+      font-size: 17px;
+      line-height: 1.7;
       color: var(--text-muted);
-      max-width: 580px;
+      max-width: 540px;
     }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; }
 
+    /* HERO PANEL CARD */
     .hero-card {
-      border: 1px solid var(--border-dark);
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
       padding: 32px;
-      background: var(--bg-alt);
-      border-radius: 4px;
+      box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05);
+      position: relative;
     }
-    .hero-card-header {
-      font: 11px/1 var(--mono);
-      letter-spacing: 0.1em;
+    .hero-card-item {
+      padding-bottom: 20px;
+    }
+    .hero-card-item:not(:first-child) {
+      padding-top: 20px;
+      border-top: 1px solid var(--card-border);
+    }
+    .hero-card-tag {
+      font: 10px var(--mono);
       text-transform: uppercase;
-      color: var(--text-subtle);
-      margin-bottom: 12px;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: block;
     }
-    .hero-card h3 { font-size: 20px; margin-bottom: 8px; }
-    .hero-card p { margin: 0 0 20px; font-size: 13px; color: var(--text-muted); line-height: 1.6; }
-    .hero-card-divider { height: 1px; background: var(--border); margin: 24px 0; }
+    .hero-card h3 { font-size: 18px; margin-bottom: 4px; }
+    .hero-card p { margin: 0; font-size: 13px; color: var(--text-muted); line-height: 1.6; }
 
-    /* SERVICES */
-    .service-grid {
+    /* SERVICES GRID */
+    .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }
     .service-card {
-      border: 1px solid var(--border);
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
       padding: 32px 28px;
-      background: var(--card-bg);
-      border-radius: 4px;
-      transition: border-color 0.2s ease, transform 0.2s ease;
+      transition: all 0.25s ease;
     }
     .service-card:hover {
-      border-color: var(--border-dark);
-      transform: translateY(-2px);
+      border-color: var(--accent-border);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px -12px rgba(2, 132, 199, 0.12);
     }
-    .service-num {
-      font: 12px/1 var(--mono);
-      color: var(--text-subtle);
-      margin-bottom: 24px;
-      display: block;
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 12px;
+      margin-bottom: 20px;
     }
-    .service-card h3 { font-size: 18px; margin-bottom: 12px; }
-    .service-card p { margin: 0; color: var(--text-muted); font-size: 13px; line-height: 1.7; }
+    .service-icon svg { width: 22px; height: 22px; }
+    .service-card h3 { font-size: 18px; margin-bottom: 10px; }
+    .service-card p { margin: 0; font-size: 13px; color: var(--text-muted); line-height: 1.7; }
 
     /* EXPERIENCE TIMELINE */
-    .timeline { display: grid; gap: 32px; }
-    .timeline-item {
+    .timeline {
       display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 32px;
-      border: 1px solid var(--border);
-      padding: 32px;
-      border-radius: 4px;
-      background: var(--card-bg);
-      transition: border-color 0.2s ease;
+      gap: 24px;
     }
-    .timeline-item:hover { border-color: var(--border-dark); }
-    .timeline-meta { display: grid; gap: 6px; align-content: start; }
-    .timeline-date { font: 11px/1.4 var(--mono); color: var(--text-subtle); text-transform: uppercase; }
-    .timeline-location { font: 11px/1.4 var(--mono); color: var(--text); font-weight: 600; }
-    .timeline-badge {
+    .timeline-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 32px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .timeline-card:hover {
+      border-color: var(--card-border-hover);
+      box-shadow: 0 10px 25px -8px rgba(15, 23, 42, 0.05);
+    }
+    .timeline-side { display: grid; gap: 6px; align-content: start; }
+    .timeline-date { font: 700 11px var(--mono); color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; }
+    .timeline-location { font: 11px var(--mono); color: var(--text-subtle); }
+    .timeline-role-badge {
       display: inline-block;
-      margin-top: 8px;
-      padding: 4px 8px;
-      background: var(--border-dark);
-      color: #ffffff;
-      font: 10px/1 var(--mono);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      border-radius: 2px;
+      margin-top: 6px;
+      padding: 4px 10px;
+      background: #f1f5f9;
+      color: var(--text-main);
+      font: 600 10px var(--mono);
+      border-radius: 6px;
       width: fit-content;
     }
-    .timeline-content h3 { font-size: 20px; }
+    .timeline-main h3 { font-size: 20px; }
     .timeline-role { font-size: 14px; font-weight: 600; color: var(--text-muted); margin: 4px 0 16px; }
-    .timeline-bullets { margin: 0; padding-left: 18px; color: var(--text-muted); font-size: 13px; }
-    .timeline-bullets li { margin-bottom: 8px; line-height: 1.7; }
-    .timeline-bullets li:last-child { margin-bottom: 0; }
-    .timeline-bullets strong { color: var(--text); font-weight: 600; }
+    .timeline-list { margin: 0; padding-left: 18px; color: var(--text-muted); font-size: 13px; }
+    .timeline-list li { margin-bottom: 8px; line-height: 1.7; }
+    .timeline-list li:last-child { margin-bottom: 0; }
+    .timeline-list strong { color: var(--text-main); font-weight: 650; }
 
-    /* PROJECTS */
-    .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    /* PROJECTS GRID */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
     .project-card {
-      border: 1px solid var(--border);
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
       padding: 32px;
-      background: var(--card-bg);
-      border-radius: 4px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: border-color 0.2s ease, transform 0.2s ease;
+      transition: all 0.25s ease;
     }
     .project-card:hover {
-      border-color: var(--border-dark);
-      transform: translateY(-2px);
+      border-color: var(--accent-border);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 28px -10px rgba(15, 23, 42, 0.08);
     }
-    .project-top-meta {
+    .project-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 16px;
     }
-    .project-category { font: 10px/1 var(--mono); text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-subtle); }
-    .project-term { font: 10px/1 var(--mono); color: var(--text-subtle); }
+    .project-cat { font: 700 10px var(--mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); }
+    .project-date { font: 10px var(--mono); color: var(--text-subtle); }
     .project-card h3 { font-size: 20px; margin-bottom: 12px; }
-    .project-card p { margin: 0 0 24px; color: var(--text-muted); font-size: 13px; line-height: 1.7; }
-    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+    .project-card p { margin: 0 0 24px; font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
     .tag {
-      padding: 4px 8px;
-      border: 1px solid var(--border);
-      background: var(--bg-alt);
-      color: var(--text);
-      font: 10px/1 var(--mono);
-      border-radius: 2px;
+      padding: 4px 10px;
+      background: var(--bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      font: 11px var(--mono);
+      border-radius: 6px;
     }
 
-    /* SKILLS */
-    .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    /* SKILLS GRID */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
     .skill-card {
-      border: 1px solid var(--border);
-      padding: 24px;
-      border-radius: 4px;
-      background: var(--card-bg);
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 28px;
     }
-    .skill-card h3 { font: 12px/1 var(--mono); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
-    .skill-list { color: var(--text-muted); font-size: 13px; line-height: 1.8; }
+    .skill-card h3 {
+      font: 700 12px var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill {
+      padding: 6px 12px;
+      background: #f1f5f9;
+      color: var(--text-main);
+      font-size: 12px;
+      font-weight: 550;
+      border-radius: 8px;
+    }
 
-    /* EDUCATION */
-    .education-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-    .education-card {
-      border: 1px solid var(--border);
-      padding: 32px;
-      border-radius: 4px;
-      background: var(--card-bg);
+    /* EDUCATION GRID */
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
     }
-    .school { font: 11px/1 var(--mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-subtle); }
-    .education-card h3 { font-size: 18px; margin: 10px 0 16px; }
-    .education-meta {
+    .education-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 32px;
+    }
+    .edu-school { font: 700 11px var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); }
+    .education-card h3 { font-size: 19px; margin: 10px 0 16px; }
+    .edu-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font: 11px/1 var(--mono);
+      font: 12px var(--mono);
       color: var(--text-muted);
-      border-top: 1px solid var(--border);
+      border-top: 1px solid var(--card-border);
       padding-top: 16px;
     }
-    .education-meta strong { color: var(--text); }
+    .edu-footer strong { color: var(--text-main); }
 
-    /* CONTACT */
-    .contact-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; align-items: start; }
-    .contact-links { display: grid; gap: 14px; margin-top: 28px; }
-    .contact-link {
+    /* CONTACT SECTION */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .contact-list { display: grid; gap: 14px; margin-top: 32px; }
+    .contact-item {
       display: flex;
       align-items: center;
       gap: 12px;
-      font: 13px/1 var(--mono);
-      color: var(--text);
+      font: 550 14px var(--sans);
+      color: var(--text-main);
       transition: color 0.15s ease;
     }
-    .contact-link:hover { color: var(--text-subtle); }
-    .contact-link svg { width: 16px; height: 16px; }
+    .contact-item:hover { color: var(--accent); }
+    .contact-icon {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 8px;
+    }
+    .contact-icon svg { width: 18px; height: 18px; }
 
     .contact-form {
-      border: 1px solid var(--border-dark);
-      padding: 32px;
-      border-radius: 4px;
-      background: var(--card-bg);
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 36px;
+      box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05);
     }
     .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
     .field { display: grid; gap: 6px; }
     .field-full { grid-column: 1 / -1; }
-    .field label { font: 11px/1 var(--mono); text-transform: uppercase; letter-spacing: 0.05em; color: var(--text); }
+    .field label { font: 600 11px var(--mono); text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-main); }
     .field input, .field select, .field textarea {
       width: 100%;
-      padding: 12px;
-      border: 1px solid var(--border);
-      border-radius: 2px;
+      padding: 12px 14px;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
       background: var(--bg);
-      color: var(--text);
+      color: var(--text-main);
       font-size: 13px;
-      transition: border-color 0.15s ease;
+      transition: all 0.15s ease;
     }
     .field input:focus, .field select:focus, .field textarea:focus {
-      border-color: var(--border-dark);
+      border-color: var(--accent);
+      background: #ffffff;
+      box-shadow: 0 0 0 3px var(--accent-light);
       outline: none;
     }
     .field textarea { min-height: 120px; resize: vertical; }
-    .form-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; gap: 16px; }
-    .form-note { font: 11px/1 var(--mono); color: var(--text-subtle); }
+    .form-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 24px; gap: 16px; }
+    .form-note { font: 11px var(--mono); color: var(--text-subtle); }
 
     /* FOOTER */
-    footer { padding: 32px 0; border-top: 1px solid var(--border); }
+    footer { padding: 36px 0; border-top: 1px solid var(--card-border); }
     .footer-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font: 11px/1 var(--mono);
+      font: 11px var(--mono);
       color: var(--text-subtle);
     }
 
-    /* RESPONSIVE */
+    /* RESPONSIVE DESIGN */
     @media (max-width: 960px) {
       .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-      .service-grid { grid-template-columns: 1fr; }
-      .timeline-item { grid-template-columns: 1fr; gap: 16px; }
-      .project-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .timeline-card { grid-template-columns: 1fr; gap: 16px; }
+      .projects-grid { grid-template-columns: 1fr; }
       .skills-grid { grid-template-columns: 1fr; }
       .education-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
@@ -425,13 +491,15 @@
         top: 100%;
         left: 0;
         right: 0;
-        background: #ffffff;
-        border-bottom: 1px solid var(--border-dark);
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--card-border);
         flex-direction: column;
         align-items: flex-start;
         padding: 24px;
-        gap: 20px;
+        gap: 18px;
         display: none;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
       }
       .nav-links.is-open { display: flex; }
       .form-grid { grid-template-columns: 1fr; }
@@ -445,10 +513,10 @@
   <header class="topbar">
     <nav class="nav wrap" aria-label="Main navigation">
       <a class="brand" href="#home">
-        <span class="brand-mark">MN</span>
-        <span class="brand-copy">
+        <span class="brand-logo">MN</span>
+        <span class="brand-text">
           <span class="brand-name">MILES NICHOLS</span>
-          <span class="brand-company">HOOK POINT SOLUTIONS</span>
+          <span class="brand-sub">HOOK POINT SOLUTIONS</span>
         </span>
       </a>
       <button class="menu-btn" id="menu-button" type="button" aria-label="Toggle Navigation Menu">
@@ -456,11 +524,11 @@
       </button>
       <div class="nav-links" id="nav-links">
         <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
+        <a href="#projects">Work</a>
         <a href="#services">Services</a>
         <a href="#skills">Skills</a>
         <a href="#education">Education</a>
-        <a href="#contact" class="btn btn-dark">Get in Touch</a>
+        <a href="#contact" class="btn btn-primary">Let's talk</a>
       </div>
     </nav>
   </header>
@@ -470,26 +538,31 @@
     <section class="hero" id="home">
       <div class="wrap">
         <div class="hero-grid">
-          <div class="hero-main">
-            <div class="hero-role">Systems Engineer &amp; AI Specialist</div>
-            <h1>Engineered software, telemetry, &amp; industrial AI.</h1>
-            <p class="hero-bio">
-              Software engineer and AI graduate student experienced in building mission-critical full-stack applications, real-time edge telemetry, SCADA platforms, and high-performance backend microservices. Founder of <strong>Hook Point Solutions LLC</strong>.
+          <div class="hero-left">
+            <span class="badge">Systems Engineer &bull; AI Specialist &bull; Founder</span>
+            <h1 class="hero-title">Building <span class="highlight">intelligent systems</span> for complex domains.</h1>
+            <p class="hero-subtitle">
+              Software engineer and AI graduate student specializing in full-stack architecture, industrial SCADA &amp; telemetry, edge AI computer vision, and high-reliability cloud pipelines[cite: 1]. Principal Engineer at <strong>Hook Point Solutions LLC</strong>[cite: 1].
             </p>
-            <div class="hero-actions">
-              <a class="btn btn-dark" href="#projects">View Projects</a>
-              <a class="btn btn-outline" href="https://github.com/miles-nichols" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+            <div class="hero-btns">
+              <a class="btn btn-primary" href="#projects">View My Work</a>
+              <a class="btn btn-secondary" href="https://github.com/miles-nichols" target="_blank" rel="noopener noreferrer">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg>
+                GitHub Profile
+              </a>
             </div>
           </div>
           <aside class="hero-card">
-            <div class="hero-card-header">Current Status</div>
-            <h3>Tesla Inc.</h3>
-            <p>Incoming Systems Engineer Intern — Cell Manufacturing (Spring / Summer 2027).</p>
-            <div class="hero-card-divider"></div>
-            <div class="hero-card-header">Software &amp; AI Consulting</div>
-            <h3>Hook Point Solutions</h3>
-            <p>Architecting secure full-stack web platforms, edge vision systems, and industrial data integrations.</p>
-            <a href="#contact" style="font: 11px/1 var(--mono); text-transform: uppercase; font-weight: 700; border-bottom: 1px solid var(--text);">Start a Project &rarr;</a>
+            <div class="hero-card-item">
+              <span class="hero-card-tag">Incoming Career Role</span>
+              <h3>Tesla Inc.</h3>
+              <p>Incoming Systems Engineer Intern — Cell Manufacturing (Spring / Summer 2027)[cite: 1].</p>
+            </div>
+            <div class="hero-card-item">
+              <span class="hero-card-tag">Consulting Firm</span>
+              <h3>Hook Point Solutions LLC</h3>
+              <p>Custom software, telemetry, full-stack portals, and cloud microservices[cite: 1].</p>
+            </div>
           </aside>
         </div>
       </div>
@@ -498,120 +571,129 @@
     <!-- SERVICES / CONSULTING -->
     <section class="section" id="services">
       <div class="wrap">
-        <div class="section-head">
-          <div class="section-tag">Hook Point Solutions LLC</div>
-          <h2>Engineering &amp; Consulting Services</h2>
-          <p class="section-intro">Custom software engineering and industrial modernization built for real-world reliability and scale.</p>
+        <div class="section-header">
+          <span class="badge">Hook Point Solutions LLC</span>
+          <h2>Services &amp; Expertise</h2>
+          <p class="section-desc">Delivering tailored software engineering and systems modernization built for performance, access security, and operational reliability[cite: 1].</p>
         </div>
-        <div class="service-grid">
+        <div class="services-grid">
           <article class="service-card">
-            <span class="service-num">01 // SECURITY &amp; FULL-STACK</span>
-            <h3>Secure Web Applications</h3>
-            <p>Full-stack platforms and medical/healthcare portals built with strict Role-Based Access Control (RBAC), end-to-end data isolation, and modern web architectures (SvelteKit, Spring Boot, PostgreSQL).</p>
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>Secure Full-Stack Portals</h3>
+            <p>Architecting web applications and medical platforms (SvelteKit, Spring Boot, PostgreSQL) with strict Role-Based Access Control (RBAC) and complete data isolation[cite: 1].</p>
           </article>
           <article class="service-card">
-            <span class="service-num">02 // INDUSTRIAL TELEMETRY</span>
-            <h3>Industrial Systems &amp; Telemetry</h3>
-            <p>SCADA integrations, automated tag tracking, sensor networks, and real-time operational performance reporting pipelines forged through hands-on manufacturing environments.</p>
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <h3>Industrial Telemetry &amp; SCADA</h3>
+            <p>Real-time telemetry routines, sensor integration, automated tag tracking, incident alerts, and equipment health monitoring pipelines[cite: 1].</p>
           </article>
           <article class="service-card">
-            <span class="service-num">03 // INFRASTRUCTURE &amp; AI</span>
-            <h3>Modernization &amp; Edge AI</h3>
-            <p>Backend microservice refactoring, database migrations (SQL Server to PostgreSQL), AWS Lambda optimization, and embedded computer vision deployments.</p>
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h3>Microservices &amp; DB Migration</h3>
+            <p>Backend microservice optimization, AWS Lambda refactoring, schema normalization, and zero-downtime database migrations (MS SQL Server to PostgreSQL)[cite: 1].</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
+    <!-- EXPERIENCE TIMELINE -->
     <section class="section" id="experience">
       <div class="wrap">
-        <div class="section-head">
-          <div class="section-tag">Work History</div>
-          <h2>Professional Experience</h2>
+        <div class="section-header">
+          <span class="badge">Career Path</span>
+          <h2>Work Experience</h2>
         </div>
         <div class="timeline">
 
           <!-- TESLA -->
-          <article class="timeline-item">
-            <div class="timeline-meta">
+          <article class="timeline-card">
+            <div class="timeline-side">
               <span class="timeline-date">Spring / Summer 2027</span>
-              <span class="timeline-location">Ames, IA / Fremont, CA</span>
-              <span class="timeline-badge">Incoming Intern</span>
+              <span class="timeline-location">Ames, IA / Fremont, CA[cite: 1]</span>
+              <span class="timeline-role-badge">Cell Manufacturing[cite: 1]</span>
             </div>
-            <div class="timeline-content">
+            <div class="timeline-main">
               <h3>Tesla</h3>
-              <div class="timeline-role">Incoming Systems Engineer Intern — Cell Manufacturing</div>
-              <ul class="timeline-bullets">
-                <li>Joined the Cell Manufacturing engineering unit supporting automated equipment health monitoring, data pipeline reliability, and process diagnostic systems.</li>
-                <li>Developing daily automated ingestion and alert pipelines, statistical fault detection models, and signal processing routines for production equipment telemetry.</li>
+              <div class="timeline-role">Incoming Systems Engineer Intern[cite: 1]</div>
+              <ul class="timeline-list">
+                <li>Joined the Cell Manufacturing engineering unit supporting automated equipment health monitoring, data pipeline reliability, and process diagnostic systems[cite: 1].</li>
+                <li>Developing daily automated ingestion and alert pipelines, statistical fault detection models, and signal processing routines for production equipment telemetry[cite: 1].</li>
               </ul>
             </div>
           </article>
 
           <!-- AMERICAN EQUITY - SOFT DEV -->
-          <article class="timeline-item">
-            <div class="timeline-meta">
+          <article class="timeline-card">
+            <div class="timeline-side">
               <span class="timeline-date">Fall 2026 — Present</span>
-              <span class="timeline-location">Financial Services</span>
+              <span class="timeline-location">Financial Services[cite: 1]</span>
+              <span class="timeline-role-badge">Software Dev[cite: 1]</span>
             </div>
-            <div class="timeline-content">
+            <div class="timeline-main">
               <h3>American Equity</h3>
-              <div class="timeline-role">Software Development Intern</div>
-              <ul class="timeline-bullets">
-                <li>Refactored <strong>6 C#/.NET backend microservices</strong> and <strong>12 AWS Lambda functions</strong> across authorization, contact, and contract domains to optimize REST API data access and support distributed system scalability.</li>
-                <li>Modernized 3 core domain services by designing source-system-agnostic authorization workflows and enforcing Role-Based Access Control (RBAC) patterns to support multi-policy integration.</li>
-                <li>Accelerated database maintainability across V1, V2, and V3 API surfaces by migrating unstructured JSONB document stores to normalized relational PostgreSQL schema architectures.</li>
+              <div class="timeline-role">Software Development Intern[cite: 1]</div>
+              <ul class="timeline-list">
+                <li>Refactored <strong>6 C#/.NET backend microservices</strong> and <strong>12 AWS Lambda functions</strong> across authorization, contact, and contract domains to optimize REST API data access and support distributed system scalability[cite: 1].</li>
+                <li>Modernized 3 core domain services by designing source-system-agnostic authorization workflows and enforcing Role-Based Access Control (RBAC) patterns to support multi-policy integration[cite: 1].</li>
+                <li>Accelerated database maintainability across V1, V2, and V3 API surfaces by migrating unstructured JSONB document stores to normalized relational PostgreSQL schema architectures[cite: 1].</li>
               </ul>
             </div>
           </article>
 
           <!-- AMERICAN EQUITY - AUTOMATION -->
-          <article class="timeline-item">
-            <div class="timeline-meta">
+          <article class="timeline-card">
+            <div class="timeline-side">
               <span class="timeline-date">Summer 2026</span>
-              <span class="timeline-location">Automation &amp; QA</span>
+              <span class="timeline-location">Automation &amp; QA[cite: 1]</span>
+              <span class="timeline-role-badge">Test Automation[cite: 1]</span>
             </div>
-            <div class="timeline-content">
+            <div class="timeline-main">
               <h3>American Equity</h3>
-              <div class="timeline-role">Automation Engineer Intern</div>
-              <ul class="timeline-bullets">
-                <li>Saved <strong>$10,000+ in annual licensing costs</strong> and improved end-to-end pipeline test reliability from <strong>~65% to ~99%</strong> across 1,500+ legacy tests by architecting a scalable .NET test automation framework with Reqnroll and RestSharp with in-depth response field validation.</li>
-                <li>Achieved <strong>100% runtime execution reliability</strong> across 35 API integration workflows by deploying LoadRunner transaction pipelines with encrypted credential management and automated payload validation filters.</li>
-                <li>Independently engineered an end-to-end record-matching system across two enterprise data sources, collaborating cross-functionally with Fraud and Data Engineering teams.</li>
+              <div class="timeline-role">Automation Engineer Intern[cite: 1]</div>
+              <ul class="timeline-list">
+                <li>Saved <strong>$10,000+ in annual licensing costs</strong> and improved end-to-end pipeline test reliability from <strong>~65% to ~99%</strong> across 1,500+ legacy tests by architecting a scalable .NET test automation framework with Reqnroll and RestSharp with in-depth response field validation[cite: 1].</li>
+                <li>Achieved <strong>100% runtime execution reliability</strong> across 35 API integration workflows by deploying LoadRunner transaction pipelines with encrypted credential management and automated payload validation filters[cite: 1].</li>
+                <li>Independently engineered an end-to-end record-matching system across two enterprise data sources, collaborating cross-functionally with Fraud and Data Engineering teams[cite: 1].</li>
               </ul>
             </div>
           </article>
 
           <!-- HOOK POINT SOLUTIONS -->
-          <article class="timeline-item">
-            <div class="timeline-meta">
+          <article class="timeline-card">
+            <div class="timeline-side">
               <span class="timeline-date">Summer 2025 — Present</span>
-              <span class="timeline-location">Software Consulting</span>
+              <span class="timeline-location">Software Consulting[cite: 1]</span>
+              <span class="timeline-role-badge">Founder &amp; Principal[cite: 1]</span>
             </div>
-            <div class="timeline-content">
+            <div class="timeline-main">
               <h3>Hook Point Solutions LLC</h3>
-              <div class="timeline-role">Principal Engineer &amp; Founder</div>
-              <ul class="timeline-bullets">
-                <li>Architected and deployed a secure full-stack neurology patient portal using SvelteKit, Spring Boot, and PostgreSQL, enforcing 100% medical data isolation via granular RBAC authentication logic.</li>
-                <li>Delivered specialized client consulting spanning cloud architectures, database normalizations, and custom system automated pipelines.</li>
+              <div class="timeline-role">Principal Engineer &amp; Founder[cite: 1]</div>
+              <ul class="timeline-list">
+                <li>Architected and deployed a secure full-stack neurology patient portal using SvelteKit, Spring Boot, and PostgreSQL, enforcing 100% medical data isolation via granular RBAC authentication logic[cite: 1].</li>
               </ul>
             </div>
           </article>
 
           <!-- INNOVATIVE SYSTEMS -->
-          <article class="timeline-item">
-            <div class="timeline-meta">
+          <article class="timeline-card">
+            <div class="timeline-side">
               <span class="timeline-date">Summer 2025</span>
-              <span class="timeline-location">Industrial / Tyson Foods</span>
+              <span class="timeline-location">Tyson Foods Project[cite: 1]</span>
+              <span class="timeline-role-badge">Systems &amp; Data[cite: 1]</span>
             </div>
-            <div class="timeline-content">
+            <div class="timeline-main">
               <h3>Innovative Systems</h3>
-              <div class="timeline-role">Data and Systems Engineer</div>
-              <ul class="timeline-bullets">
-                <li>Executed a full database migration from MS SQL Server to PostgreSQL, converting legacy transaction groups, report queries, views, and programmable functions.</li>
-                <li>Engineered real-time industrial telemetry systems for <strong>Tyson Foods</strong>, building automated tag tracking, incident alert routines, and operational performance reporting pipelines.</li>
-                <li>Earned the <strong>8.1 IU Credential</strong> by completing advanced industrial automation coursework and Ignition SCADA system integration training.</li>
+              <div class="timeline-role">Data and Systems Engineer[cite: 1]</div>
+              <ul class="timeline-list">
+                <li>Executed a full database migration from MS SQL Server to PostgreSQL, converting legacy transaction groups, report queries, views, and programmable functions[cite: 1].</li>
+                <li>Engineered real-time industrial telemetry systems for <strong>Tyson Foods</strong>, building automated tag tracking, incident alert routines, and operational performance reporting pipelines[cite: 1].</li>
+                <li>Earned the <strong>8.1 IU Credential</strong> by completing advanced industrial automation coursework and Ignition SCADA system integration training[cite: 1].</li>
               </ul>
             </div>
           </article>
@@ -623,20 +705,20 @@
     <!-- PROJECTS -->
     <section class="section" id="projects">
       <div class="wrap">
-        <div class="section-head">
-          <div class="section-tag">Portfolio</div>
-          <h2>Featured Systems &amp; Engineering Work</h2>
+        <div class="section-header">
+          <span class="badge">Portfolio</span>
+          <h2>Featured Projects</h2>
         </div>
-        <div class="project-grid">
+        <div class="projects-grid">
 
           <article class="project-card">
             <div>
-              <div class="project-top-meta">
-                <span class="project-category">Edge AI &amp; Hardware</span>
-                <span class="project-term">Fall 2026</span>
+              <div class="project-header">
+                <span class="project-cat">Edge AI &amp; Hardware[cite: 1]</span>
+                <span class="project-date">Fall 2026[cite: 1]</span>
               </div>
               <h3>AI-Driven Edge &amp; Cloud Wildlife Classifier</h3>
-              <p>Engineered an edge-to-cloud computer vision pipeline on a Raspberry Pi using PIR hardware sensors and ML classification for servo actuation, paired with a full-stack web application for cloud telemetry and real-time species visualization.</p>
+              <p>Engineered an edge-to-cloud computer vision pipeline on a Raspberry Pi using PIR hardware sensors and ML classification for servo actuation, paired with a full-stack web application for cloud telemetry and real-time species visualization[cite: 1].</p>
             </div>
             <div class="tags">
               <span class="tag">Python</span>
@@ -648,29 +730,30 @@
 
           <article class="project-card">
             <div>
-              <div class="project-top-meta">
-                <span class="project-category">Computer Vision</span>
-                <span class="project-term">Fall 2026</span>
+              <div class="project-header">
+                <span class="project-cat">Computer Vision[cite: 1]</span>
+                <span class="project-date">Fall 2026[cite: 1]</span>
               </div>
               <h3>ASL Real-Time Transcription System</h3>
-              <p>Achieved <strong>99.28% classification accuracy</strong> on real-time video streams by constructing a sign language transcription engine utilizing MediaPipe landmark tracking, OpenCV, and a custom SVM pipeline with an interactive GUI interface.</p>
+              <p>Achieved <strong>99.28% classification accuracy</strong> on real-time video streams by constructing a sign language transcription engine utilizing MediaPipe landmark tracking, OpenCV, and a custom SVM pipeline with an interactive GUI[cite: 1].</p>
             </div>
             <div class="tags">
               <span class="tag">MediaPipe</span>
               <span class="tag">OpenCV</span>
               <span class="tag">SVM</span>
               <span class="tag">Python</span>
+              <span class="tag">GUI</span>
             </div>
           </article>
 
           <article class="project-card">
             <div>
-              <div class="project-top-meta">
-                <span class="project-category">Embedded Engineering</span>
-                <span class="project-term">Fall 2024</span>
+              <div class="project-header">
+                <span class="project-cat">Embedded Systems[cite: 1]</span>
+                <span class="project-date">Fall 2024[cite: 1]</span>
               </div>
               <h3>Autonomous Robot Navigation</h3>
-              <p>Led a 6-person engineering team to program low-level Embedded C navigation drivers for ADC sensors, Ping ultrasonic distance sensors, and servo controllers on an autonomous microcontroller robot platform.</p>
+              <p>Led a 6-person engineering team to program low-level Embedded C navigation drivers for ADC sensors, Ping ultrasonic distance sensors, and servo controllers on an autonomous microcontroller robot platform[cite: 1].</p>
             </div>
             <div class="tags">
               <span class="tag">Embedded C</span>
@@ -682,12 +765,12 @@
 
           <article class="project-card">
             <div>
-              <div class="project-top-meta">
-                <span class="project-category">Systems Architecture</span>
-                <span class="project-term">Fall 2025</span>
+              <div class="project-header">
+                <span class="project-cat">Systems Architecture[cite: 1]</span>
+                <span class="project-date">Fall 2025[cite: 1]</span>
               </div>
-              <h3>ARMv8 Architecture &amp; Disassembler Tools</h3>
-              <p>Engineered a machine code disassembler decoding 32-bit binary streams into ARM/LEGv8 assembly across 5 instruction formats while hand-optimizing C sorting algorithms down to raw assembly stack frames.</p>
+              <h3>ARMv8 Disassembler &amp; Architecture Tools</h3>
+              <p>Engineered a machine code disassembler decoding 32-bit binary streams into ARM/LEGv8 assembly across 5 instruction formats while hand-optimizing C sorting algorithms down to raw assembly stack frames[cite: 1].</p>
             </div>
             <div class="tags">
               <span class="tag">Java</span>
@@ -704,26 +787,64 @@
     <!-- TECHNICAL SKILLS -->
     <section class="section" id="skills">
       <div class="wrap">
-        <div class="section-head">
-          <div class="section-tag">Technical Capability</div>
-          <h2>Skills &amp; Technologies</h2>
+        <div class="section-header">
+          <span class="badge">Toolkit</span>
+          <h2>Technical Skills</h2>
         </div>
         <div class="skills-grid">
           <article class="skill-card">
-            <h3>Programming Languages</h3>
-            <div class="skill-list">Python, C, C#, Java, TypeScript, JavaScript, Go, SQL, ARM Assembly, Verilog, MATLAB</div>
+            <h3>Languages</h3>
+            <div class="skill-pills">
+              <span class="pill">Python</span>
+              <span class="pill">C</span>
+              <span class="pill">C#</span>
+              <span class="pill">Java</span>
+              <span class="pill">TypeScript</span>
+              <span class="pill">JavaScript</span>
+              <span class="pill">Go</span>
+              <span class="pill">SQL</span>
+              <span class="pill">ARM Assembly</span>
+              <span class="pill">Verilog</span>
+              <span class="pill">MATLAB</span>
+            </div>
           </article>
           <article class="skill-card">
             <h3>Systems &amp; Embedded</h3>
-            <div class="skill-list">Microcontrollers, Embedded C, ADC Sensors, Hardware Telemetry, Memory Management, Ignition SCADA</div>
+            <div class="skill-pills">
+              <span class="pill">Microcontrollers</span>
+              <span class="pill">Embedded C</span>
+              <span class="pill">ADC Sensors</span>
+              <span class="pill">Hardware Telemetry</span>
+              <span class="pill">Memory Management</span>
+              <span class="pill">Ignition SCADA</span>
+            </div>
           </article>
           <article class="skill-card">
             <h3>AI/ML &amp; Signal Processing</h3>
-            <div class="skill-list">Computer Vision, OpenCV, PyTorch, Edge AI Inference, Fault Detection, Digital Filtering, Scikit-learn, XGBoost</div>
+            <div class="skill-pills">
+              <span class="pill">Computer Vision</span>
+              <span class="pill">OpenCV</span>
+              <span class="pill">PyTorch</span>
+              <span class="pill">Edge AI Inference</span>
+              <span class="pill">Fault Detection</span>
+              <span class="pill">Digital Filtering</span>
+              <span class="pill">Scikit-learn</span>
+              <span class="pill">XGBoost</span>
+            </div>
           </article>
           <article class="skill-card">
-            <h3>Cloud, Infra &amp; Databases</h3>
-            <div class="skill-list">AWS (Lambda, S3, CloudWatch), Azure, Docker, CI/CD, GitHub Actions, Linux/Bash, PostgreSQL, MySQL, MS SQL Server, XML, RestSharp</div>
+            <h3>Cloud, Infrastructure &amp; Databases</h3>
+            <div class="skill-pills">
+              <span class="pill">AWS (Lambda, S3, CloudWatch)</span>
+              <span class="pill">Azure</span>
+              <span class="pill">Docker</span>
+              <span class="pill">CI/CD</span>
+              <span class="pill">GitHub Actions</span>
+              <span class="pill">Linux/Bash</span>
+              <span class="pill">PostgreSQL</span>
+              <span class="pill">MS SQL Server</span>
+              <span class="pill">RestSharp</span>
+            </div>
           </article>
         </div>
       </div>
@@ -732,54 +853,62 @@
     <!-- EDUCATION -->
     <section class="section" id="education">
       <div class="wrap">
-        <div class="section-head">
-          <div class="section-tag">Academic Background</div>
+        <div class="section-header">
+          <span class="badge">Academic Background</span>
           <h2>Iowa State University</h2>
         </div>
         <div class="education-grid">
           <article class="education-card">
-            <div class="school">Iowa State University</div>
-            <h3>Master’s Degree in Artificial Intelligence</h3>
-            <div class="education-meta">
-              <span>Expected Fall 2027</span>
-              <strong>4.0 GPA · Dean’s List</strong>
+            <span class="edu-school">Iowa State University[cite: 1]</span>
+            <h3>Master’s Degree in Artificial Intelligence[cite: 1]</h3>
+            <div class="edu-footer">
+              <span>Expected Fall 2027[cite: 1]</span>
+              <strong>4.0 GPA &bull; Dean’s List[cite: 1]</strong>
             </div>
           </article>
           <article class="education-card">
-            <div class="school">Iowa State University</div>
-            <h3>Bachelor’s Degree in Software Engineering</h3>
-            <div class="education-meta">
-              <span>Expected Fall 2026</span>
-              <strong>3.64 GPA · Dean’s List</strong>
+            <span class="edu-school">Iowa State University[cite: 1]</span>
+            <h3>Bachelor’s Degree in Software Engineering[cite: 1]</h3>
+            <div class="edu-footer">
+              <span>Expected Fall 2026[cite: 1]</span>
+              <strong>3.64 GPA &bull; Dean’s List[cite: 1]</strong>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT & CONSULTING INQUIRY -->
+    <!-- CONTACT -->
     <section class="section" id="contact" style="border-bottom: none;">
       <div class="wrap contact-grid">
         <div>
-          <div class="section-tag">Get In Touch</div>
-          <h2>Let’s build something reliable.</h2>
-          <p class="section-intro">Available for select consulting engagements, full-stack software development, and technical inquiries.</p>
-          <div class="contact-links">
-            <a class="contact-link" href="mailto:miles@voilatech.com">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg>
-              miles@voilatech.com
+          <span class="badge">Get in Touch</span>
+          <h2>Let’s start a conversation.</h2>
+          <p class="section-desc">Available for technical consulting engagements, systems design, and software inquiries[cite: 1].</p>
+          <div class="contact-list">
+            <a class="contact-item" href="mailto:miles@voilatech.com">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+              </div>
+              miles@voilatech.com[cite: 1]
             </a>
-            <a class="contact-link" href="tel:+17123558178">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              712-355-8178
+            <a class="contact-item" href="tel:+17123558178">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              712-355-8178[cite: 1]
             </a>
-            <a class="contact-link" href="https://linkedin.com/in/miles-nichols" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.74a1.56 1.56 0 1 0 0 3.12 1.56 1.56 0 0 0 0-3.12Z"/></svg>
-              LinkedIn / miles-nichols
+            <a class="contact-item" href="https://linkedin.com/in/miles-nichols" target="_blank" rel="noopener noreferrer">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.74a1.56 1.56 0 1 0 0 3.12 1.56 1.56 0 0 0 0-3.12Z"/></svg>
+              </div>
+              LinkedIn / miles-nichols[cite: 1]
             </a>
-            <a class="contact-link" href="https://github.com/miles-nichols" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg>
-              GitHub / miles-nichols
+            <a class="contact-item" href="https://github.com/miles-nichols" target="_blank" rel="noopener noreferrer">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg>
+              </div>
+              GitHub / miles-nichols[cite: 1]
             </a>
           </div>
         </div>
@@ -789,30 +918,30 @@
           <div class="form-grid">
             <div class="field">
               <label for="name">Name</label>
-              <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+              <input type="text" id="name" name="name" placeholder="Your Name" required>
             </div>
             <div class="field">
               <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="jane@company.com" required>
+              <input type="email" id="email" name="email" placeholder="name@company.com" required>
             </div>
             <div class="field field-full">
-              <label for="service">Service Interested In</label>
+              <label for="service">Interested Service</label>
               <select id="service" name="service">
                 <option value="fullstack">Full-Stack Application Development</option>
                 <option value="telemetry">Industrial Telemetry &amp; SCADA</option>
-                <option value="microservices">Microservices &amp; Database Migration</option>
+                <option value="microservices">Microservices &amp; DB Migration</option>
                 <option value="ai">Edge AI &amp; Computer Vision</option>
-                <option value="other">General Consulting Inquiry</option>
+                <option value="general">General Engagement Inquiry</option>
               </select>
             </div>
             <div class="field field-full">
-              <label for="message">Project Overview</label>
-              <textarea id="message" name="message" placeholder="Describe your project, timeline, and requirements..." required></textarea>
+              <label for="message">Project Details</label>
+              <textarea id="message" name="message" placeholder="Describe your goals, requirements, and timeline..." required></textarea>
             </div>
           </div>
           <div class="form-bottom">
-            <button class="btn btn-dark" type="submit">Send Inquiry</button>
-            <span class="form-note">Direct response within 24h</span>
+            <button class="btn btn-primary" type="submit">Send Message</button>
+            <span class="form-note">Response within 24 hours</span>
           </div>
         </form>
       </div>
@@ -821,8 +950,8 @@
 
   <footer>
     <div class="wrap footer-inner">
-      <span>&copy; Miles Nichols. Hook Point Solutions LLC. All rights reserved.</span>
-      <span>Engineered with Precision &bull; Ames, IA</span>
+      <span>&copy; Miles Nichols. Hook Point Solutions LLC. All rights reserved[cite: 1].</span>
+      <span>Ames, IA &bull; Systems &amp; Software</span>
     </div>
   </footer>
 
