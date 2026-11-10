@@ -107,8 +107,7 @@ figure { margin: 0; }
 .intro h1 { font-size: clamp(3.2rem, 10vw, 7rem); letter-spacing: -.055em; line-height: .92; }
 .intro .lead { max-width: 32ch; margin: 22px 0 30px; }
 .portrait { max-width: 240px; }
-.portrait img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); background: var(--gray); filter: grayscale(1); transition: filter .4s ease; }
-.portrait:hover img { filter: none; }
+.portrait img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); background: var(--gray); }
 @media (min-width: 600px) { .portrait { max-width: 300px; } }
 @media (min-width: 900px) {
   .intro { padding: 96px 0; }
@@ -219,6 +218,6 @@ figure { margin: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   html, .slider { scroll-behavior: auto; }
-  .work-media img, .portrait img { transition: none; }
+  .work-media img { transition: none; }
   .work:hover .work-media img { transform: none; }
 }
