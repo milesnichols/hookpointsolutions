@@ -1,4 +1,4 @@
-// Hook Point Solutions — small enhancements. The page works without JS.
+// Hook Point Solutions — small enhancements. Every page works without JS.
 (function () {
   document.documentElement.classList.remove('no-js');
 
@@ -6,36 +6,19 @@
   var menuBtn = document.querySelector('.menu-btn');
   var nav = document.getElementById('site-nav');
   function setMenu(open) {
-    if (!menuBtn || !nav) return;
     nav.classList.toggle('is-open', open);
     menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
   }
   if (menuBtn && nav) {
     menuBtn.addEventListener('click', function () { setMenu(!nav.classList.contains('is-open')); });
-    nav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && nav.classList.contains('is-open')) { setMenu(false); menuBtn.focus(); }
     });
   }
 
-  // Highlight the nav link for the section on screen
-  var links = nav ? Array.prototype.slice.call(nav.querySelectorAll('a[href^="#"]')) : [];
-  var sections = links.map(function (a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
-  if ('IntersectionObserver' in window && sections.length) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        links.forEach(function (a) {
-          a.setAttribute('aria-current', a.getAttribute('href') === '#' + entry.target.id ? 'true' : 'false');
-        });
-      });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    sections.forEach(function (s) { io.observe(s); });
-  }
-
-  // Projects slider: arrows, dots, keyboard (swiping/scrolling works without JS)
+  // Projects slider (About page): arrows, dots, keyboard. Swiping works without JS.
   var track = document.getElementById('project-track');
-  if (track) {
+  if (track && track.children.length) {
     var cards = track.children;
     var prev = document.querySelector('.slider-btn[data-dir="-1"]');
     var next = document.querySelector('.slider-btn[data-dir="1"]');
@@ -46,9 +29,7 @@
       var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
       return cards[0].getBoundingClientRect().width + gap;
     };
-    var perView = function () { return Math.max(1, Math.round(track.clientWidth / step())); };
-    var pages = function () { return Math.max(1, cards.length - perView() + 1); };
-
+    var pages = function () { return Math.max(1, cards.length - Math.max(1, Math.round(track.clientWidth / step())) + 1); };
     var buildDots = function () {
       if (!dotsBox) return;
       dotsBox.innerHTML = '';
